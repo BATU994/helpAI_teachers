@@ -17,7 +17,10 @@ class DataProvider extends ChangeNotifier {
 
   Future<void> fetchAndSetUserData(String uid) async {
     final doc =
-        await FirebaseFirestore.instance.collection('users').doc(uid).get();
+        await FirebaseFirestore.instance
+            .collection('users_teachers')
+            .doc(uid)
+            .get();
     if (doc.exists) {
       final data = doc.data();
       _userName = data?['firstName'] + ' ' + data?['lastName'];
