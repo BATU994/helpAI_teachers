@@ -50,8 +50,8 @@ class _MyHomePageState extends State<MyHomePage> {
       selectedItemColor: Colors.blue,
       items: const [
         BottomNavigationBarItem(
-          label: 'Home',
-          icon: Icon(Icons.home, color: Colors.blueAccent),
+          label: 'Books',
+          icon: Icon(Icons.menu_book_sharp, color: Colors.blueAccent),
         ),
         BottomNavigationBarItem(
           label: 'News',
