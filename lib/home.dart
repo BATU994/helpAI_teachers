@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:helpai_teachers/features/Articlepage/presentation/articlepage.dart';
+import 'package:helpai_teachers/features/books/presentation/books.dart';
 import 'package:helpai_teachers/features/chat/presentation/chat.dart';
 import 'package:helpai_teachers/features/userInfo/presentation/userInfo.dart';
 
@@ -17,10 +19,10 @@ class _MyHomePageState extends State<MyHomePage> {
     Widget bodyContent;
     switch (sectionIndex) {
       case 0:
-        bodyContent = const Placeholder();
+        bodyContent = Books();
         break;
       case 1:
-        bodyContent = const Placeholder();
+        bodyContent = ArticlePage();
         break;
       case 2:
         bodyContent = const Chat();
@@ -52,8 +54,8 @@ class _MyHomePageState extends State<MyHomePage> {
           icon: Icon(Icons.home, color: Colors.blueAccent),
         ),
         BottomNavigationBarItem(
-          label: 'Search',
-          icon: Icon(Icons.search, color: Colors.blueAccent),
+          label: 'News',
+          icon: Icon(Icons.newspaper_sharp, color: Colors.blueAccent),
         ),
         BottomNavigationBarItem(
           label: 'Message',

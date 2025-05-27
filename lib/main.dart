@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:helpai_teachers/features/auth/data/data_provider.dart';
 import 'package:helpai_teachers/features/auth/presentation/forepage.dart';
 import 'package:helpai_teachers/firebase_options.dart';
+import 'package:helpai_teachers/home.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: FirstAuthorizationPage(),
+      home:const  MyHomePage(),
     );
   }
 }
