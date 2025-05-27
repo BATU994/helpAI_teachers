@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:helpai_teachers/features/Articlepage/data/models/articel_model.dart';
 import 'package:helpai_teachers/features/Articlepage/data/services/service.dart';
+import 'package:helpai_teachers/features/Articlepage/presentation/article_detail.dart';
 
 class ArticlePage extends StatefulWidget {
   const ArticlePage({super.key});
@@ -21,7 +22,10 @@ class _ArticlePageState extends State<ArticlePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Articles')),
+      appBar: AppBar(
+        title: const Text('Articles'),
+        leading: Icon(Icons.newspaper),
+      ),
       body: FutureBuilder<List<NewsResponse>>(
         future: ArticleService().fetchArticles(),
         builder: (context, snapshot) {
@@ -38,51 +42,57 @@ class _ArticlePageState extends State<ArticlePage> {
             itemCount: articles.length,
             itemBuilder: (context, index) {
               final article = articles[index];
-              return InkWell(
-                onTap: () {},
-                child: Card(
-                  margin: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 6,
-                  ),
-                  elevation: 3,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  child: ListTile(
-                    contentPadding: const EdgeInsets.symmetric(
-                      horizontal: 16,
-                      vertical: 10,
-                    ),
-                    leading: const Icon(
-                      Icons.article_rounded,
-                      color: Colors.blueAccent,
-                      size: 30,
-                    ),
-                    title: Text(
-                      article.title ?? 'No title available',
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
+              return Card(
+                margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                elevation: 3,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: ListTile(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder:
+                            (context) => ArticleDetail(
+                              article: {
+                                "title": article.title,
+                                "description": article.description,
+                                "image_url": article.source_icon,
+                                "pubDate": article.pubDate,
+                              },
+                            ),
                       ),
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
+                    );
+                  },
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 10,
+                  ),
+                  leading: const Icon(
+                    Icons.article_rounded,
+                    color: Colors.blueAccent,
+                    size: 30,
+                  ),
+                  title: Text(
+                    article.title ?? 'No title available',
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
                     ),
-                    subtitle: Text(
-                      article.description ?? 'No description available',
-                      style: const TextStyle(
-                        fontSize: 14,
-                        color: Colors.black54,
-                      ),
-                      maxLines: 3,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    trailing: const Icon(
-                      Icons.arrow_forward_ios,
-                      size: 16,
-                      color: Colors.grey,
-                    ),
-                    onTap: () {},
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  subtitle: Text(
+                    article.description ?? 'No description available',
+                    style: const TextStyle(fontSize: 14, color: Colors.black54),
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  trailing: const Icon(
+                    Icons.arrow_forward_ios,
+                    size: 16,
+                    color: Colors.grey,
                   ),
                 ),
               );

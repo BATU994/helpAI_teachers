@@ -2,11 +2,11 @@ import 'package:dio/dio.dart';
 import 'package:helpai_teachers/features/Articlepage/data/models/articel_model.dart';
 
 class ArticleService {
-  final Dio _dio=Dio();
+  final Dio _dio = Dio();
 
   Future<List<NewsResponse>> fetchArticles() async {
     final response = await _dio.get(
-      'https://newsdata.io/api/1/latest?apikey=pub_cd11daa3b4944fed9d311e1f9c88900b&language=kz',
+      'https://newsdata.io/api/1/latest?apikey=pub_cd11daa3b4944fed9d311e1f9c88900b&language=en&category=top,&',
     );
 
     if (response.statusCode == 200) {
