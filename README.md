@@ -1,4 +1,4 @@
-# helpai_teachers
+# HelpAI TEACHERS
 
 A new Flutter project.
 
