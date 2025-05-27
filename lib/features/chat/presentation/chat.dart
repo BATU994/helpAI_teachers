@@ -91,13 +91,16 @@ class _ChatState extends State<Chat> {
                     ),
                   );
                 },
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                textColor: Colors.white,
+                tileColor: Colors.blue,
                 title: Text('Chat with: $otherUserId'),
               );
             }
-
             final userData = userSnapshot.data!.data() as Map<String, dynamic>;
             final userName = userData['firstName'] ?? 'Unknown';
-
             return InkWell(
               onTap: () {},
               child: ListTile(

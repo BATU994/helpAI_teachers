@@ -4,7 +4,6 @@ import 'package:helpai_teachers/features/auth/data/data_provider.dart';
 
 class ChatServices {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  final DataProvider dataProvider = DataProvider();
 
   Stream<List<String>> getChatsStream() {
     final uid = FirebaseAuth.instance.currentUser!.uid;
